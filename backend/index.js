@@ -4,7 +4,7 @@ const fs = require('fs')
 const express = require('express');
 const mqtt = require('mqtt');
 const cors = require('cors');
-const mongoose = require('mongoose')
+
 
 
 
@@ -16,10 +16,6 @@ app.use(cors());
 
 
 
-mongoose.connect(process.env.MONGODB_URL);
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
 
 
 const client = mqtt.connect(process.env.CLIENT, { 
@@ -71,7 +67,7 @@ const client = mqtt.connect(process.env.CLIENT, {
 
 
     app.get('/picture', function(req, res) {
-    client.publish("start", JSON.stringify("lol"));
+    client.publish("start", JSON.stringify("start"));
     res.json({ message: "works" })
     console.log("hey!")
     })

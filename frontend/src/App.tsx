@@ -28,8 +28,8 @@ function App() {
         <img src={image} alt="Images from raspberry" />
       </div>
       <div className="center">
-        <button onClick={takePhoto}> Hey hey hey take photo</button>
-        <button onClick={fetchImage}> Hey hey hey see Photo</button>
+        <button onClick={takePhoto}> take photo</button>
+        <button onClick={fetchImage}>  see Photo</button>
       </div>
     </div>
   );
