@@ -40,14 +40,6 @@ const client = mqtt.connect(process.env.CLIENT, {
                 console.log('saved');
             }
         });
-
-
-        delete message.data.image;
-        message.data.filename = filename;
-        
-
-
-
    })
 
 
@@ -68,7 +60,7 @@ const client = mqtt.connect(process.env.CLIENT, {
 
     app.get('/picture', function(req, res) {
     client.publish("start", JSON.stringify("start"));
-    res.json({ message: "works" })
+    res.json({ message: "Received in the backend" })
     console.log("hey!")
     })
 
