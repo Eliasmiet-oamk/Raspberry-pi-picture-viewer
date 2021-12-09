@@ -31,7 +31,6 @@ const client = mqtt.connect(process.env.CLIENT, {
   client.on("message", function (topic, message) {
     message = JSON.parse(message.toString()); 
         const image = Buffer.from(message.data.image, 'utf8');
-        const id = message.data.id
         const filename = 'image.jpg';
         fs.writeFile(__dirname + '/image/' + filename, image, { encoding: 'binary' }, function(err) {
             if (err) {
