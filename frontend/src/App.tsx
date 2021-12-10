@@ -6,9 +6,6 @@ import * as blazeface from "@tensorflow-models/blazeface";
 import "./App.css";
 
 function App() {
-  const image12 = useRef<HTMLImageElement>(null);
-  const canvas = useRef<HTMLCanvasElement>(null);
-  let ctx = CanvasRenderingContext2D
   const [image, setImage] = useState("");
   const [messages, setMessage] = useState("");
 
@@ -79,13 +76,21 @@ function App() {
     
     const model = await blazeface.load();
     const img = document.getElementById("img") as HTMLImageElement;
-   
-  
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement
+    const ctx = canvas.getContext("2d") as CanvasRenderingContext2D
+     
     const returnTensors = false; 
     const predictions = await model.estimateFaces(img, returnTensors);
-    if (predictions.length) {
-      console.log(predictions);
+    if (predictions.length > 0) {
+
+      for (let i = 0; i < predictions.length; i++) {
+        let start = predictions[i].topLeft;
+        let end = predictions[i].bottomRight;
+      
+
+      ctx.fillRect(5, 3, 9, 99);
     }
+   }
   }
   
   
@@ -100,8 +105,8 @@ function App() {
       </header>
       <div ></div>
       <div className="center">
-        <img className="imageStyle" src={image} id="img" alt="Images from raspberry" ref={image12} crossOrigin='anonymous' />
-        <canvas className="imageStyle"  ref={canvas}/>
+        <img className="imageStyle" src={image} id="img" alt="Images from raspberry"  crossOrigin='anonymous' />
+        <canvas className="imageStyle"  id="canvas"/>
       </div>
       <div className="center" >
         <button  className="button button2" onClick={takePhoto}> take photo</button>
