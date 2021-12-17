@@ -30,13 +30,7 @@
     align-items: center;
 }
 
-.imageStyle {
-  margin-top: 25px;
-  background-color: white;
-  height: 480px;
-  width: 680px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 .imageStyle2 {
   margin-top: 25px;
   background-color: white;
