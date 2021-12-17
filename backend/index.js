@@ -59,21 +59,21 @@ const client = mqtt.connect(process.env.CLIENT, {
 
     app.get('/picture', function(req, res) {
     client.publish("start", JSON.stringify("start"));
-    res.json({ message: "Message sent via mqtt" })
-    console.log("hey!")
+    res.json({ message: "Message sent via mqtt, please refresh the picture in a minute" })
+    console.log("Message sent via mqtt")
     })
 
     app.get('/picture60s', function(req, res) {
         client.publish("start60s", JSON.stringify("start60s"));
-        res.json({ message: "Started" })
-        console.log("hey!60s")
+        res.json({ message: "Started 60s" })
+        console.log("Started 60s")
         })
 
 
     app.get('/stop60s', function(req, res) {
             client.publish("stop60s", JSON.stringify("stop60s"));
             res.json({ message: "Stopped" })
-            console.log("hey!60s")
+            console.log("Stopped")
             })
 
 app.listen(8000, function() {
